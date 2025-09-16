@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { Search, ArrowLeft, Download, Star, ExternalLink, ChevronRight, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Search, ArrowLeft, Download, Star, ChevronRight, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -211,7 +211,7 @@ export default function AppStore() {
       
       const about = doc.querySelector(".main-entry-content > p")?.textContent?.trim() || "No description available.";
       const downloadButton = doc.querySelector("#main-download-button");
-      const downloadUrl = downloadButton ? atob((downloadButton as any).dataset.href) : '#';
+      const downloadUrl = downloadButton ? atob((downloadButton as HTMLElement).dataset.href || '') : '#';
       
       // Parse app details
       const details: { [key: string]: string } = {};
@@ -347,11 +347,10 @@ export default function AppStore() {
       }
 
       const validLinks: DownloadLink[] = [];
-      let hasValidLinks = false;
 
       items.forEach(item => {
         let title, tagsDiv, href;
-        let nodeName = item.tagName.toUpperCase();
+        const nodeName = item.tagName.toUpperCase();
 
         let primaryLink;
         if (nodeName === 'A') {
@@ -369,11 +368,9 @@ export default function AppStore() {
           if (linkUrl.hostname !== "apkmody.com") {
             return; // This is an ad link (like ldplayer) or invalid, skip it.
           }
-        } catch (e) {
+        } catch {
           return; // Invalid URL
         }
-        
-        hasValidLinks = true;
         
         if (nodeName === 'A') {
           // This is a simple link item (like Original APK)
@@ -391,7 +388,6 @@ export default function AppStore() {
 
         // If we successfully parsed a valid item, add it to the modal
         if (title && tagsDiv && href) {
-          const tagsHtml = tagsDiv.innerHTML;
           const rawText = tagsDiv.textContent?.toLowerCase() || '';
           const isMod = rawText.includes("mod") || rawText.includes("unlocked") || rawText.includes("premium");
           const isOriginal = rawText.includes("original") || (!isMod && rawText.includes("apk"));
@@ -481,7 +477,7 @@ export default function AppStore() {
         return td?.textContent?.trim() || null;
       }
       return null;
-    } catch (e) {
+    } catch {
       return null;
     }
   };
@@ -658,7 +654,7 @@ export default function AppStore() {
             <div className="flex items-center gap-3">
               <h2 className="text-2xl font-bold">Search Results</h2>
               <Badge variant="secondary" className="liquid-glass">
-                "{searchQuery}"
+                &quot;{searchQuery}&quot;
               </Badge>
             </div>
             
@@ -837,7 +833,7 @@ export default function AppStore() {
                     <h3 className="text-xl font-bold text-foreground">App Details</h3>
                     <div className="space-y-4">
                       {Object.entries(currentApp.details).map(([key, value]) => (
-                        <div key={key} className="flex justify-between items-start py-3 border-b border-border/30 last:border-0">
+                        <div key={key} className="flex justify-between items-start py-3 border-b border-gray-200 dark:border-gray-700 last:border-0">
                           <span className="font-semibold text-muted-foreground text-sm uppercase tracking-wide">{key}</span>
                           <span className="text-right max-w-[60%] text-foreground font-medium" dangerouslySetInnerHTML={{ __html: value }} />
                         </div>
@@ -859,7 +855,7 @@ export default function AppStore() {
                   ) : (
                     <div className="space-y-6">
                       {reviews.slice(0, 5).map((review, index) => (
-                        <div key={index} className="border-b border-border/30 pb-6 last:border-0">
+                        <div key={index} className="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0">
                           <div className="flex items-start gap-3 mb-3">
                             <img 
                               src={review.authorImg} 
