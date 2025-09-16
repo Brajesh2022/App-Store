@@ -684,34 +684,36 @@ export default function AppStore() {
                 </div>
               </div>
             ) : (
-              <div className="grid gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:gap-3 md:gap-4">
                 {searchResults.map((app, index) => (
                   <div 
                     key={index}
                     className="liquid-card rounded-2xl cursor-pointer hover:bg-accent/50 transition-all duration-300 app-card-hover stagger-item"
                     onClick={() => loadAppPage(app.url, 'search')}
                   >
-                    <div className="p-4">
-                      <div className="flex items-center gap-4">
-                        <div className="relative">
+                    <div className="p-3 sm:p-4">
+                      <div className="flex items-center gap-3 sm:gap-4">
+                        <div className="relative flex-shrink-0">
                           <img 
                             src={app.icon} 
                             alt={app.title}
-                            className="w-16 h-16 object-cover rounded-xl shadow-md"
+                            className="w-12 h-12 sm:w-16 sm:h-16 object-cover rounded-xl shadow-md"
                             loading="lazy"
                           />
                           <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-black/10" />
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <h4 className="font-bold text-lg truncate text-foreground">{app.title}</h4>
+                        <div className="flex-1 min-w-0 overflow-hidden">
+                          <h4 className="font-bold text-base sm:text-lg text-foreground truncate max-w-full">{app.title}</h4>
                           {app.subtitle && (
-                            <p className="text-sm text-muted-foreground truncate mt-1">{app.subtitle}</p>
+                            <p className="text-xs sm:text-sm text-muted-foreground truncate mt-1 max-w-full">{app.subtitle}</p>
                           )}
-                          <div className="flex items-center gap-1 mt-2">
+                          <div className="flex items-center gap-1 mt-1 sm:mt-2">
                             {renderStars(app.rating)}
                           </div>
                         </div>
-                        <ChevronRight className="w-5 h-5 text-muted-foreground" />
+                        <div className="flex-shrink-0">
+                          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
+                        </div>
                       </div>
                     </div>
                   </div>

@@ -389,3 +389,60 @@ html {
 .gap-responsive {
   gap: clamp(0.75rem, 2vw, 1.5rem);
 }
+
+/* Enhanced Text Truncation for Search Results */
+.search-title-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  display: block;
+}
+
+.search-subtitle-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  display: block;
+  line-height: 1.4;
+}
+
+/* Responsive Search Grid */
+.search-grid-responsive {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.search-card-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.search-text-container {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .search-grid-responsive {
+    gap: 1rem;
+  }
+  
+  .search-card-content {
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .search-grid-responsive {
+    gap: 1.25rem;
+  }
+}
