@@ -394,7 +394,7 @@ export default function AppStore() {
           
           // Extract version from title
           const versionMatch = title.match(/v(\d+\.[\d\.]+)/);
-          const version = versionMatch ? versionMatch[1] : null;
+          const version = versionMatch ? versionMatch[1] : undefined;
           
           validLinks.push({
             title,
