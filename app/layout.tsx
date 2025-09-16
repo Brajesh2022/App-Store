@@ -14,17 +14,23 @@ export const metadata: Metadata = {
   description: "Discover and download premium Android apps and games with mod features. Clean, safe, and fast downloads.",
   keywords: "android apps, apk download, mod apps, premium apps, games",
   authors: [{ name: "App Store" }],
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" }
-  ],
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
     title: "App Store"
   }
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" }
+  ],
 };
 
 export default function RootLayout({
