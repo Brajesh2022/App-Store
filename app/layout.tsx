@@ -10,23 +10,39 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "App Store - Premium APK Downloads",
-  description: "Discover and download premium Android apps and games with mod features. Clean, safe, and fast downloads.",
-  keywords: "android apps, apk download, mod apps, premium apps, games",
-  authors: [{ name: "App Store" }],
-  manifest: "/manifest.json",
+  title: "vlyx.mod - Premium MOD APK Downloads",
+  description: "Discover and download premium Android apps and games with advanced mod features. Clean, safe, and lightning-fast downloads for all your favorite apps. Made by Brajesh",
+  keywords: "mod apk, android mods, premium apps, modded games, vlyx mod, apk download, unlocked features, free premium apps",
+  authors: [{ name: "Brajesh" }],
+  creator: "Brajesh",
+  publisher: "vlyx.mod",
+  robots: "index, follow",
+  openGraph: {
+    title: "vlyx.mod - Premium MOD APK Downloads",
+    description: "Premium Android MOD APKs with unlocked features. Made by Brajesh",
+    url: "https://vlyx.mod",
+    siteName: "vlyx.mod",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "vlyx.mod - Premium MOD APK Downloads", 
+    description: "Premium Android MOD APKs with unlocked features. Made by Brajesh",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "App Store"
+    title: "vlyx.mod"
   }
 };
 
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  maximumScale: 5,
+  minimumScale: 1,
+  userScalable: true,
+  viewportFit: "cover",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" }
