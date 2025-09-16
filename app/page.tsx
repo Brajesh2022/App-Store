@@ -200,7 +200,7 @@ export default function AppStore() {
       const version = findTableData(doc, "Version") || "N/A";
       const size = findTableData(doc, "Size") || "N/A";
       const requires = findTableData(doc, "Requires") || "N/A";
-      const playStoreUrl = findTableData(doc, "Google Play ID", true);
+      const playStoreUrl = findTableData(doc, "Google Play ID", true) || undefined;
       
       const screenshotElements = doc.querySelectorAll(".screenshots a.screenshot");
       const screenshots: string[] = [];
