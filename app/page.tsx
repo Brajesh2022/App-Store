@@ -527,10 +527,10 @@ export default function AppStore() {
           {!searchExpanded ? (
             <div className="flex items-center justify-between">
               <h1 
-                className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent cursor-pointer floating"
+                className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent cursor-pointer floating"
                 onClick={showHome}
               >
-                App Store
+                vlyx.mod
               </h1>
               
               <Button
@@ -543,19 +543,19 @@ export default function AppStore() {
               </Button>
             </div>
           ) : (
-            <div className="flex items-center gap-3 slide-in-search w-full">
+            <div className="flex items-center gap-2 sm:gap-3 slide-in-search w-full">
               <div className="relative flex-1">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+                <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
                 <Input
                   id="search-input"
                   placeholder="Search for games or apps..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && searchApps()}
-                  className="pl-12 pr-4 h-12 liquid-glass border-0 text-lg"
+                  className="pl-10 sm:pl-12 pr-3 sm:pr-4 h-11 sm:h-12 liquid-glass border-0 text-base sm:text-lg"
                 />
               </div>
-              <Button onClick={searchApps} className="liquid-glass bg-blue-500/80 hover:bg-blue-600/80 text-white h-12 px-6">
+              <Button onClick={searchApps} className="liquid-glass bg-blue-500/80 hover:bg-blue-600/80 text-white h-11 sm:h-12 px-4 sm:px-6">
                 Search
               </Button>
               <Button
@@ -571,7 +571,7 @@ export default function AppStore() {
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-4 py-6">
+      <main className="max-w-6xl mx-auto px-3 sm:px-4 py-5 sm:py-6 safe-px">
         {/* Home View */}
         {currentView === 'home' && (
           <div className="space-y-8">
@@ -602,11 +602,11 @@ export default function AppStore() {
                     </div>
                     
                     <div className="relative">
-                      <div className="flex gap-4 overflow-x-auto scroll-container pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                      <div className="flex gap-3 sm:gap-4 overflow-x-auto scroll-container pb-3 sm:pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                         {apps.map((app, index) => (
                           <div 
                             key={index}
-                            className={`flex-shrink-0 w-32 cursor-pointer app-card-hover stagger-item`}
+                            className={`flex-shrink-0 w-28 sm:w-32 cursor-pointer app-card-hover stagger-item`}
                             onClick={() => loadAppPage(app.url, 'home')}
                           >
                             <div className="liquid-card rounded-2xl overflow-hidden">
@@ -615,7 +615,7 @@ export default function AppStore() {
                                   <img 
                                     src={app.icon} 
                                     alt={app.title}
-                                    className="w-full h-24 object-cover rounded-xl shadow-lg"
+                                    className="w-full h-24 sm:h-28 object-cover rounded-xl shadow-lg"
                                     loading="lazy"
                                   />
                                   <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-black/20 to-transparent" />
@@ -684,7 +684,7 @@ export default function AppStore() {
                 </div>
               </div>
             ) : (
-              <div className="grid gap-4">
+              <div className="grid gap-3 sm:gap-4">
                 {searchResults.map((app, index) => (
                   <div 
                     key={index}
@@ -697,15 +697,15 @@ export default function AppStore() {
                           <img 
                             src={app.icon} 
                             alt={app.title}
-                            className="w-16 h-16 object-cover rounded-xl shadow-md"
+                            className="w-14 h-14 sm:w-16 sm:h-16 object-cover rounded-xl shadow-md"
                             loading="lazy"
                           />
                           <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-black/10" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-bold text-lg truncate text-foreground">{app.title}</h4>
+                          <h4 className="font-bold text-base sm:text-lg truncate text-foreground">{app.title}</h4>
                           {app.subtitle && (
-                            <p className="text-sm text-muted-foreground truncate mt-1">{app.subtitle}</p>
+                            <p className="text-xs sm:text-sm text-muted-foreground truncate mt-1">{app.subtitle}</p>
                           )}
                           <div className="flex items-center gap-1 mt-2">
                             {renderStars(app.rating)}
@@ -753,18 +753,18 @@ export default function AppStore() {
             ) : currentApp && (
               <div className="space-y-8">
                 {/* App Header - No Box */}
-                <div className="flex items-start gap-4 px-2">
+                <div className="flex items-start gap-3 sm:gap-4 px-2">
                   <div className="relative">
                     <img 
                       src={currentApp.icon} 
                       alt={currentApp.title}
-                      className="w-20 h-20 object-cover rounded-2xl shadow-lg"
+                      className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-2xl shadow-lg"
                     />
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-transparent to-black/20" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h2 className="text-3xl font-bold truncate text-foreground">{currentApp.title}</h2>
-                    <h3 className="text-lg text-blue-600 dark:text-blue-400 font-semibold mt-1">{currentApp.publisher}</h3>
+                    <h2 className="text-2xl sm:text-3xl font-bold truncate text-foreground">{currentApp.title}</h2>
+                    <h3 className="text-base sm:text-lg text-blue-600 dark:text-blue-400 font-semibold mt-1">{currentApp.publisher}</h3>
                     <Badge className="mt-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white border-0">
                       {currentApp.modFeature}
                     </Badge>
@@ -773,7 +773,7 @@ export default function AppStore() {
 
                 {/* Download Button - Prominent */}
                 <Button 
-                  className="w-full h-16 text-lg font-bold pulse-glow bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 border-0 shadow-lg rounded-2xl"
+                  className="w-full h-14 sm:h-16 text-base sm:text-lg font-bold pulse-glow bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 border-0 shadow-lg rounded-2xl"
                   onClick={() => openDownloadModal(currentApp.downloadUrl)}
                 >
                   <Download className="w-6 h-6 mr-3" />
@@ -781,7 +781,7 @@ export default function AppStore() {
                 </Button>
 
                 {/* App Meta - Inline Grid */}
-                <div className="grid grid-cols-4 gap-3 px-2">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 px-2">
                   <div className="text-center">
                     <div className="text-xs text-muted-foreground uppercase font-bold mb-2 tracking-wider">Rating</div>
                     <div className="flex justify-center gap-1">
@@ -806,13 +806,13 @@ export default function AppStore() {
                 {currentApp.screenshots.length > 0 && (
                   <div className="space-y-4">
                     <h3 className="text-xl font-bold px-2 text-foreground">Screenshots</h3>
-                    <div className="flex gap-4 overflow-x-auto scroll-container pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                    <div className="flex gap-3 sm:gap-4 overflow-x-auto scroll-container pb-3 sm:pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                       {currentApp.screenshots.map((screenshot, index) => (
                         <div key={index} className="flex-shrink-0">
                           <img
                             src={screenshot}
                             alt={`Screenshot ${index + 1}`}
-                            className="h-64 rounded-2xl object-cover cursor-pointer hover:scale-105 transition-transform duration-300 shadow-lg"
+                            className="h-56 sm:h-64 md:h-72 rounded-2xl object-cover cursor-pointer hover:scale-105 transition-transform duration-300 shadow-lg"
                             onClick={() => window.open(screenshot, '_blank')}
                           />
                         </div>

@@ -1,13 +1,13 @@
 {
-  "name": "App Store - Premium APK Downloads",
-  "short_name": "App Store",
-  "description": "Discover and download premium Android apps and games with mod features",
+  "name": "vlyx.mod — Premium APK & MOD Downloads",
+  "short_name": "vlyx.mod",
+  "description": "Made by Brajesh. Discover and download premium Android apps and games with MOD features.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0a",
   "theme_color": "#6366f1",
   "orientation": "portrait",
-  "categories": ["productivity", "utilities"],
+  "categories": ["tools", "entertainment", "productivity"],
   "icons": [
     {
       "src": "/icon-192.png",
