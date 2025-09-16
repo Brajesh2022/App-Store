@@ -833,7 +833,7 @@ export default function AppStore() {
                     <h3 className="text-xl font-bold text-foreground">App Details</h3>
                     <div className="space-y-4">
                       {Object.entries(currentApp.details).map(([key, value]) => (
-                        <div key={key} className="flex justify-between items-start py-3 border-b border-gray-200 dark:border-gray-700 last:border-0">
+                        <div key={key} className="flex justify-between items-start py-3 border-b border-gray-200 last:border-0">
                           <span className="font-semibold text-muted-foreground text-sm uppercase tracking-wide">{key}</span>
                           <span className="text-right max-w-[60%] text-foreground font-medium" dangerouslySetInnerHTML={{ __html: value }} />
                         </div>
@@ -855,7 +855,7 @@ export default function AppStore() {
                   ) : (
                     <div className="space-y-6">
                       {reviews.slice(0, 5).map((review, index) => (
-                        <div key={index} className="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0">
+                        <div key={index} className="border-b border-gray-200 pb-6 last:border-0">
                           <div className="flex items-start gap-3 mb-3">
                             <img 
                               src={review.authorImg} 
